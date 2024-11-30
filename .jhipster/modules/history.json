@@ -54,5 +54,16 @@
       "indentSize" : 2,
       "springConfigurationFormat" : "yaml"
     }
+  }, {
+    "module" : "typescript",
+    "date" : "2024-11-30T19:31:26.714562500Z",
+    "properties" : {
+      "packageName" : "com.jsorant.personaljourney",
+      "projectName" : "Personal Journey",
+      "baseName" : "personalJourney",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
   } ]
 }
