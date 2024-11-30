@@ -8,6 +8,8 @@
     "node": ">=22"
   },
   "scripts": {
+    "e2e": "cypress open --e2e --config-file src/test/webapp/e2e/cypress-config.ts",
+    "e2e:headless": "cypress run --headless --config-file src/test/webapp/e2e/cypress-config.ts",
     "dev": "npm-run-all --parallel dev:*",
     "dev:vite": "vite",
     "build": "npm-run-all build:*",
@@ -26,6 +28,8 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "cypress": "13.16.0",
+    "eslint-plugin-cypress": "4.1.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.0.1",
     "@types/node": "22.10.0",
