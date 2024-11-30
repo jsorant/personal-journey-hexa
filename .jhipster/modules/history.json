@@ -21,5 +21,16 @@
       "indentSize" : 2,
       "springConfigurationFormat" : "yaml"
     }
+  }, {
+    "module" : "renovate",
+    "date" : "2024-11-30T19:31:24.373284100Z",
+    "properties" : {
+      "packageName" : "com.jsorant.personaljourney",
+      "projectName" : "Personal Journey",
+      "baseName" : "personalJourney",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
   } ]
 }
