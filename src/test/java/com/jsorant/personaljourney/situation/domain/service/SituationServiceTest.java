@@ -1,6 +1,7 @@
 package com.jsorant.personaljourney.situation.domain.service;
 
 import com.jsorant.personaljourney.UnitTest;
+import com.jsorant.personaljourney.shared.date.infrastructure.secondary.FakeDateProvider;
 import com.jsorant.personaljourney.situation.domain.Situation;
 import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;

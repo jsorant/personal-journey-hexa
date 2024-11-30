@@ -1,6 +1,6 @@
 package com.jsorant.personaljourney.situation.domain.service;
 
-import com.jsorant.personaljourney.situation.domain.DateProvider;
+import com.jsorant.personaljourney.shared.date.domain.DateProvider;
 import com.jsorant.personaljourney.situation.domain.Situation;
 import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;

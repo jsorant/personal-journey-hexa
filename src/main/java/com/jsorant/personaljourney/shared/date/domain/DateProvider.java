@@ -1,4 +1,4 @@
-package com.jsorant.personaljourney.situation.domain;
+package com.jsorant.personaljourney.shared.date.domain;
 
 import org.jmolecules.architecture.hexagonal.Port;
 
