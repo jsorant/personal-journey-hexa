@@ -1,0 +1,9 @@
+logging:
+  config: classpath:logback.xml
+  level:
+    com:
+      jsorant:
+        personaljourney: 'OFF'
+spring:
+  main:
+    banner-mode: 'off'
