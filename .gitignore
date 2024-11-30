@@ -128,3 +128,5 @@ Desktop.ini
 # ESLint
 ######################
 .eslintcache
+# Approval Testing
+src/test/resources/**/*.received.txt
