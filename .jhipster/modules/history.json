@@ -231,5 +231,17 @@
       "springConfigurationFormat" : "yaml",
       "serverPort" : 8080
     }
+  }, {
+    "module" : "logs-spy",
+    "date" : "2024-11-30T19:45:30.904669500Z",
+    "properties" : {
+      "packageName" : "com.jsorant.personaljourney",
+      "projectName" : "Personal Journey",
+      "baseName" : "personalJourney",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml",
+      "serverPort" : 8080
+    }
   } ]
 }

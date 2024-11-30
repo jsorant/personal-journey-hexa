@@ -48,5 +48,6 @@ docker compose -f src/main/docker/postgresql.yml up -d
 - [Assertions](documentation/assertions.md)
 - [Property Based Testing](documentation/property-based-testing.md)
 - [Postgresql](documentation/postgresql.md)
+- [Logs Spy](documentation/logs-spy.md)
 
 <!-- jhipster-needle-documentation -->
