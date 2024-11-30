@@ -1,0 +1,17 @@
+{
+  "name": "personal-journey",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Personal Journey",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "9.1.7",
+    "lint-staged": "15.2.10"
+  }
+}
