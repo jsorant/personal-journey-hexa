@@ -267,5 +267,17 @@
       "springConfigurationFormat" : "yaml",
       "serverPort" : 8080
     }
+  }, {
+    "module" : "jmolecules",
+    "date" : "2024-11-30T20:53:06.948130700Z",
+    "properties" : {
+      "endOfLine" : "lf",
+      "springConfigurationFormat" : "yaml",
+      "packageName" : "com.jsorant.personaljourney",
+      "projectName" : "Personal Journey",
+      "indentSize" : 2,
+      "serverPort" : 8080,
+      "baseName" : "personalJourney"
+    }
   } ]
 }
