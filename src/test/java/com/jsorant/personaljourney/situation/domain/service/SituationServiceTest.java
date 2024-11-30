@@ -18,17 +18,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @UnitTest
 public class SituationServiceTest {
 
-  SituationService service = new SituationService();
-  FakeDateProvider dateProvider = new FakeDateProvider();
-  SituationRepository situations = new InMemorySituationRepository();
+  private final FakeDateProvider dateProvider = new FakeDateProvider();
+  private final SituationRepository situations = new InMemorySituationRepository();
+  private final SituationService service = new SituationService(dateProvider, situations);
 
   @Test
   void shouldCreerDeuxSituations() {
     dateProvider.setNow(dateCreation());
-    service.creerSituation(situations, dateProvider);
+    service.creerSituation();
 
     dateProvider.setNow(autreDateCreation());
-    service.creerSituation(situations, dateProvider);
+    service.creerSituation();
 
     List<Situation> liste = situations.getAll();
     assertThat(liste).hasSize(2);

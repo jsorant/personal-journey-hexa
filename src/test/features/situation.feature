@@ -7,5 +7,5 @@ Feature: Gestion des situations difficiles
     Scenario: Création à date
       When Je déclare une nouvelle situation difficile le "2024-10-12T14:45:00Z"
       Then La liste de mes situation difficiles est
-        | Date creation        | id  |
-        | 2024-10-12T14:45:00Z | SD1 |
+        | id  | Date creation        |
+        | SD1 | 2024-10-12T14:45:00Z |

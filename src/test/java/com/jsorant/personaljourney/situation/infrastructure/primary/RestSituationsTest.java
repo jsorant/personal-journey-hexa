@@ -8,7 +8,7 @@ import static com.jsorant.personaljourney.situation.infrastructure.primary.RestS
 import static org.assertj.core.api.Assertions.assertThat;
 
 @UnitTest
-class RestSituationsDifficilesTest {
+class RestSituationsTest {
 
   @Test
   void shouldCreateRestSituationsDifficiles() {

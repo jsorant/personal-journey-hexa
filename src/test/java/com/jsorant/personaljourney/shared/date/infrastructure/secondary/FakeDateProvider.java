@@ -1,13 +1,13 @@
 package com.jsorant.personaljourney.shared.date.infrastructure.secondary;
 
 import com.jsorant.personaljourney.shared.date.domain.DateProvider;
-import org.jmolecules.ddd.annotation.Service;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
-@Service
+@Component
 @Primary
 @Profile("test")
 public final class FakeDateProvider implements DateProvider {

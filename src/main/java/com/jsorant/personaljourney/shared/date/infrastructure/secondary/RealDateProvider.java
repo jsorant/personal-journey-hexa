@@ -2,11 +2,11 @@ package com.jsorant.personaljourney.shared.date.infrastructure.secondary;
 
 import com.jsorant.personaljourney.shared.date.domain.DateProvider;
 import com.jsorant.personaljourney.shared.generation.domain.ExcludeFromGeneratedCodeCoverage;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
-@Service
+@Component
 public class RealDateProvider implements DateProvider {
 
   @Override
