@@ -130,3 +130,5 @@ Desktop.ini
 .eslintcache
 # Approval Testing
 src/test/resources/**/*.received.txt
+# JQwik
+.jqwik-database
