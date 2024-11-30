@@ -10,5 +10,16 @@
       "indentSize" : 2,
       "springConfigurationFormat" : "yaml"
     }
+  }, {
+    "module" : "application-service-hexagonal-architecture-documentation",
+    "date" : "2024-11-30T19:31:23.763393800Z",
+    "properties" : {
+      "packageName" : "com.jsorant.personaljourney",
+      "projectName" : "Personal Journey",
+      "baseName" : "personalJourney",
+      "endOfLine" : "lf",
+      "indentSize" : 2,
+      "springConfigurationFormat" : "yaml"
+    }
   } ]
 }
