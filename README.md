@@ -36,5 +36,7 @@ npm install
 
 - [Hexagonal architecture](documentation/hexagonal-architecture.md)
 - [Approval Testing](documentation/approval-testing.md)
+- [Package types](documentation/package-types.md)
+- [Assertions](documentation/assertions.md)
 
 <!-- jhipster-needle-documentation -->
