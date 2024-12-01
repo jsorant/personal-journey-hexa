@@ -84,6 +84,15 @@ public class SituationSteps {
     String signesListAsString = String.join(",", decoratedSignesPhysiologiques);
     rest.post("/api/situation/" + id + "/signes-physiologiques", "{ \"signesPhysiologiques\": [%s] }"
       .formatted(signesListAsString));
+  }
+
+  @Then("La définition des signes physiologiques est valide")
+  public void laDefinitionDesSignesPhysiologiquesEstValide() {
     assertThatLastAsyncResponse().hasOkStatus();
+  }
+
+  @Then("La définition des signes physiologiques échoue car la situation est inconnue")
+  public void laDefinitionDesSignesPhysiologiquesEchoueCarLaSituationEstInconnue() {
+    assertThatLastAsyncResponse().hasHttpStatus(HttpStatus.NOT_FOUND);
   }
 }

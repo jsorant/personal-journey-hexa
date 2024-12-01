@@ -37,7 +37,16 @@ Feature: Gestion des situations difficiles
       When Je définis les signes physiologiques de la situation "SD1" avec
         | NAUSEE   |
         | DOULEURS |
-      Then La situation "SD1" est à l'étape "DECRIRE_SITUATION"
+      Then La définition des signes physiologiques est valide
+      And La situation "SD1" est à l'étape "DECRIRE_SITUATION"
 
-    # TODO not found
+
+  Rule: Définir une situation difficile
+
+    Scenario: Définir les signes physiologiques pour une situation inconnue échoue
+      When Je définis les signes physiologiques de la situation "SD99999" avec
+        | NAUSEE   |
+        | DOULEURS |
+      Then La définition des signes physiologiques échoue car la situation est inconnue
+
       #TODO maj affichage détaillé
