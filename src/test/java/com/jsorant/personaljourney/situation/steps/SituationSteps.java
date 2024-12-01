@@ -77,4 +77,22 @@ public class SituationSteps {
     rest.get("/api/situation/" + id + "/etape");
     assertThatLastAsyncResponse().hasHttpStatus(HttpStatus.NOT_FOUND);
   }
+
+  @When("Je définis les signes physiologiques de la situation {string} avec")
+  public void jeDefinisLesSignesPhysiologiquesDeLaSituationAvec(String id, List<String> signesPhysiologiques) {
+    List<String> decoratedSignesPhysiologiques = signesPhysiologiques.stream().map(s -> "\"" + s + "\"").toList();
+    String signesListAsString = String.join(",", decoratedSignesPhysiologiques);
+    rest.post("/api/situation/" + id + "/signes-physiologiques", "{ \"signesPhysiologiques\": [%s] }"
+      .formatted(signesListAsString));
+  }
+
+  @Then("La définition des signes physiologiques est valide")
+  public void laDefinitionDesSignesPhysiologiquesEstValide() {
+    assertThatLastAsyncResponse().hasOkStatus();
+  }
+
+  @Then("La définition des signes physiologiques échoue car la situation est inconnue")
+  public void laDefinitionDesSignesPhysiologiquesEchoueCarLaSituationEstInconnue() {
+    assertThatLastAsyncResponse().hasHttpStatus(HttpStatus.NOT_FOUND);
+  }
 }
