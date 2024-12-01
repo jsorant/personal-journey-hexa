@@ -33,4 +33,11 @@ public class SituationSteps {
     assertThatLastAsyncResponse().hasOkStatus()
       .hasElement("$.situations").containingExactly(expectedSituations);
   }
+
+  @Then("La situation {string} est à l'étape {string}")
+  public void laSituationEstALEtape(String id, String etape) {
+    rest.get("/api/situation/" + id + "/etape");
+    assertThatLastAsyncResponse().hasOkStatus()
+      .hasResponse().withValue(etape);
+  }
 }
