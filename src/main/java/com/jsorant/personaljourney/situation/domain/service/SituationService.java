@@ -2,8 +2,8 @@ package com.jsorant.personaljourney.situation.domain.service;
 
 import com.jsorant.personaljourney.shared.date.domain.DateProvider;
 import com.jsorant.personaljourney.situation.domain.Situation;
-import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;
+import com.jsorant.personaljourney.situation.domain.events.SituationCreee;
 import org.jmolecules.ddd.annotation.Service;
 
 import java.util.List;
@@ -19,9 +19,10 @@ public class SituationService {
     this.situations = situations;
   }
 
-  public void creerSituation() {
-    SituationId id = situations.prochainId();
-    situations.save(new Situation(id, dateProvider.now()));
+  public SituationCreee creerSituation() {
+    Situation situation = new Situation(situations.prochainId(), dateProvider.now());
+    situations.save(situation);
+    return new SituationCreee(situation.id(), situation.dateCreation());
   }
 
   public List<Situation> recupererSituations() {

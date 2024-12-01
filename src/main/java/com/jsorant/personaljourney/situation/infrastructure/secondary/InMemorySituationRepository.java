@@ -27,4 +27,8 @@ public class InMemorySituationRepository implements SituationRepository {
   public void save(Situation situation) {
     this.situations.add(situation);
   }
+
+  public void clear() {
+    situations.clear();
+  }
 }
