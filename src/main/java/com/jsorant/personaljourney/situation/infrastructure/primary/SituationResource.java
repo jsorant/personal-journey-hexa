@@ -33,6 +33,16 @@ class SituationResource {
     return ResponseEntity.ok().build();
   }
 
+  @PostMapping("/{id}/signes-physiologiques")
+  @Operation(summary = "Définir les signes physiologiques d'une situation difficile")
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "200", description = "Définition réussie"),
+  })
+  ResponseEntity<Void> definirSignesPhysiologiques(@PathVariable String id, @RequestBody RestSignesPhysiologiques signesPhysiologiques) {
+    situations.definirSignesPhysiologiques(new SituationId(id), signesPhysiologiques.toDomain());
+    return ResponseEntity.ok().build();
+  }
+
   @GetMapping()
   @Operation(summary = "Récupère la liste des situations difficiles")
   @ApiResponses(value = {

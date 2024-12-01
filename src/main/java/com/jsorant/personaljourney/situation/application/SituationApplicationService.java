@@ -2,6 +2,7 @@ package com.jsorant.personaljourney.situation.application;
 
 import com.jsorant.personaljourney.shared.date.domain.DateProvider;
 import com.jsorant.personaljourney.situation.domain.*;
+import com.jsorant.personaljourney.situation.domain.events.SignePhysiologiqueDefinis;
 import com.jsorant.personaljourney.situation.domain.events.SituationCreee;
 import com.jsorant.personaljourney.situation.domain.service.SituationService;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,15 @@ public class SituationApplicationService {
 
   public Optional<Situation> recupererDetailSituation(SituationId situationId) {
     return situationsDetaillesProjections.pour(situationId);
+  }
+
+  public void definirSignesPhysiologiques(SituationId id, List<SignePhysiologique> signesPhysiologiques) {
+    SignePhysiologiqueDefinis event = situations.definirSignesPhysiologiques(id, signesPhysiologiques);
+    // TODO publish/handle event
+    handle(event);
+  }
+
+  private void handle(SignePhysiologiqueDefinis event) {
+    etapesSituationsProjections.definir(event.situationId(), Etape.DECRIRE_SITUATION);
   }
 }

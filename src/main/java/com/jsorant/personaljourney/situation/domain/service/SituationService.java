@@ -1,8 +1,11 @@
 package com.jsorant.personaljourney.situation.domain.service;
 
 import com.jsorant.personaljourney.shared.date.domain.DateProvider;
+import com.jsorant.personaljourney.situation.domain.SignePhysiologique;
 import com.jsorant.personaljourney.situation.domain.Situation;
+import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;
+import com.jsorant.personaljourney.situation.domain.events.SignePhysiologiqueDefinis;
 import com.jsorant.personaljourney.situation.domain.events.SituationCreee;
 import org.jmolecules.ddd.annotation.Service;
 
@@ -27,5 +30,9 @@ public class SituationService {
 
   public List<Situation> recupererSituations() {
     return situations.getAll();
+  }
+
+  public SignePhysiologiqueDefinis definirSignesPhysiologiques(SituationId id, List<SignePhysiologique> signePhysiologiques) {
+    return new SignePhysiologiqueDefinis(id, dateProvider.now(), signePhysiologiques);
   }
 }

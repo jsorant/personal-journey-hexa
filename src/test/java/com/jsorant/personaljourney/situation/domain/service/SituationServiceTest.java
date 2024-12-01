@@ -5,6 +5,7 @@ import com.jsorant.personaljourney.shared.date.infrastructure.secondary.FakeDate
 import com.jsorant.personaljourney.situation.domain.Situation;
 import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;
+import com.jsorant.personaljourney.situation.domain.events.SignePhysiologiqueDefinis;
 import com.jsorant.personaljourney.situation.domain.events.SituationCreee;
 import com.jsorant.personaljourney.situation.infrastructure.secondary.InMemorySituationRepository;
 import org.junit.jupiter.api.Test;
@@ -12,8 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Instant;
 import java.util.List;
 
-import static com.jsorant.personaljourney.situation.domain.SituationFixtures.autreDateCreation;
-import static com.jsorant.personaljourney.situation.domain.SituationFixtures.dateCreation;
+import static com.jsorant.personaljourney.situation.domain.SituationFixtures.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @UnitTest
@@ -39,12 +39,25 @@ public class SituationServiceTest {
   }
 
   @Test
-  void shouldMakeDomainEvent() {
+  void shouldMakeDomainEventWhenCreating() {
     dateProvider.setNow(dateCreation());
     SituationCreee event = service.creerSituation();
 
     assertThat(event.id()).isEqualTo(new SituationId("SD1"));
     assertThat(event.dateCreation()).isEqualTo(dateCreation());
+  }
+
+  @Test
+  void shouldMakeDomainEventWhenDefinirSignesPhysiologiques() {
+    dateProvider.setNow(dateCreation());
+    SituationCreee creationEvent = service.creerSituation();
+
+    dateProvider.setNow(dateDefinitionSignesPhysiologiques());
+    SignePhysiologiqueDefinis event = service.definirSignesPhysiologiques(creationEvent.id(), signesPhysiologiques());
+
+    assertThat(event.situationId()).isEqualTo(creationEvent.id());
+    assertThat(event.date()).isEqualTo(dateDefinitionSignesPhysiologiques());
+    assertThat(event.signes()).isEqualTo(signesPhysiologiques());
   }
 
   private static void assertSituation(Situation situation, String expectedId, Instant expectedDateCreation) {
