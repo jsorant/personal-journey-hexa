@@ -2,15 +2,13 @@ package com.jsorant.personaljourney.situation.infrastructure.primary;
 
 import com.jsorant.personaljourney.situation.application.SituationApplicationService;
 import com.jsorant.personaljourney.situation.domain.Situation;
+import com.jsorant.personaljourney.situation.domain.SituationId;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,5 +41,29 @@ class SituationResource {
   ResponseEntity<RestSituations> recupererSituations() {
     List<Situation> liste = situations.recupererSituations();
     return ResponseEntity.ok(RestSituations.from(liste));
+  }
+
+  @GetMapping("/{id}")
+  @Operation(summary = "Récupère le détail d'une situation difficile")
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "200"),
+    @ApiResponse(responseCode = "404", description = "Situation non trouvée"),
+  })
+  ResponseEntity<RestSituationDetaillee> recupererDetailSituation(@PathVariable String id) {
+    return situations.recupererDetailSituation(new SituationId(id))
+      .map(situation -> ResponseEntity.ok(RestSituationDetaillee.from(situation)))
+      .orElseGet(() -> ResponseEntity.notFound().build());
+  }
+
+  @GetMapping("/{id}/etape")
+  @Operation(summary = "Récupère l'étape actuelle de la situation")
+  @ApiResponses(value = {
+    @ApiResponse(responseCode = "200"),
+    @ApiResponse(responseCode = "404", description = "Situation non trouvée"),
+  })
+  ResponseEntity<RestEtape> recupererSituations(@PathVariable String id) {
+    return situations.etapePour(new SituationId(id))
+      .map(etape -> ResponseEntity.ok(RestEtape.from(etape)))
+      .orElseGet(() -> ResponseEntity.notFound().build());
   }
 }

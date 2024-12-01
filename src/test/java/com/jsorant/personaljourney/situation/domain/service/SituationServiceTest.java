@@ -5,6 +5,7 @@ import com.jsorant.personaljourney.shared.date.infrastructure.secondary.FakeDate
 import com.jsorant.personaljourney.situation.domain.Situation;
 import com.jsorant.personaljourney.situation.domain.SituationId;
 import com.jsorant.personaljourney.situation.domain.SituationRepository;
+import com.jsorant.personaljourney.situation.domain.events.SituationCreee;
 import com.jsorant.personaljourney.situation.infrastructure.secondary.InMemorySituationRepository;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,15 @@ public class SituationServiceTest {
 
     assertSituation(liste.get(0), "SD1", dateCreation());
     assertSituation(liste.get(1), "SD2", autreDateCreation());
+  }
+
+  @Test
+  void shouldMakeDomainEvent() {
+    dateProvider.setNow(dateCreation());
+    SituationCreee event = service.creerSituation();
+
+    assertThat(event.id()).isEqualTo(new SituationId("SD1"));
+    assertThat(event.dateCreation()).isEqualTo(dateCreation());
   }
 
   private static void assertSituation(Situation situation, String expectedId, Instant expectedDateCreation) {
